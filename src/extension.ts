@@ -25,7 +25,8 @@ export function deactivate() { }
 
 function generateTypescriptInterface(text: string, parent = 'Model') {
 	let json = JSON.parse(text);
-	let csharpCode = `interface ${toUpperCaseFirstLetter(parent)}\n{\n`;
+	let csharpCode = '';
+	let modelCode = `interface ${toUpperCaseFirstLetter(parent)}\n{\n`;
 
 	for (const key in json) {
 		const type = typeof json[key];
@@ -68,13 +69,14 @@ function generateTypescriptInterface(text: string, parent = 'Model') {
 				csharpType = 'any';
 		}
 
-		csharpCode += `     ${toUpperCaseFirstLetter(key)}: ${csharpType};\n`;
+		modelCode += `     ${toUpperCaseFirstLetter(key)}: ${csharpType};\n`;
 	}
 
-	csharpCode += '}\n\n';
+	modelCode += '}\n\n';
 
-	return csharpCode;
+	return csharpCode + modelCode;
 }
+
 
 function toUpperCaseFirstLetter(text: string) {
 	return text.charAt(0).toUpperCase() + text.slice(1);
