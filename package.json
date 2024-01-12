@@ -2,7 +2,7 @@
   "name": "json2typescript",
   "displayName": "Json2Typescript",
   "description": "Synergy Projects",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "publisher": "Göksel ÖZER",
   "engines": {
     "vscode": "^1.85.0"
